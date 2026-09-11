@@ -7,3 +7,4 @@ module.exports = async (req, res, next) => {
     message: "این رو شما دست رسی ندارید ",
   });
 };
+const user  = 10
