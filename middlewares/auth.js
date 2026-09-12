@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 const UserModel = require("./../models/user.model");
 
 module.exports = async (req, res, next) => {
-  const authHeader = req.header("Authorization").split(" ");
-  if (authHeader.length != 2) {
+  const authHeader = req.header("Authorization")?.split(" ");
+  if (authHeader?.length != 2) {
     return res.status(403).json({
       Message: "این یک api خصوصی هستش ",
     });

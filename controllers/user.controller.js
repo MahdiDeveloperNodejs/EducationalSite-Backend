@@ -15,3 +15,8 @@ exports.banUser = async (req, res) => {
   }
   return res.status(500).json({ message: "مشکل از سرور است " });
 };
+exports.getAll = async (req, res) => {
+  const user = await UserModel.find({});
+
+  return res.json(user);
+};
