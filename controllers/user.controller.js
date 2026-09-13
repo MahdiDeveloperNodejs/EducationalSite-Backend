@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose");
 const BanUserModel = require("../models/banUser.model");
 const UserModel = require("../models/user.model");
+const bcrypt = require("bcrypt");
 
 exports.banUser = async (req, res) => {
   const mainUserRsulete = await UserModel.findOne({
@@ -65,6 +66,12 @@ exports.chengrole = async (req, res) => {
   });
 };
 exports.updateUser = async (req, res) => {
-  
+  const { fullName, name, email, phone, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 12);
+  const user = await UserModel.findByIdAndUpdate(
+    { _id: req.user._id },
+    { name, fullName, email, phone, password: hashedPassword },
+    // { : 0 },
+  ).lean();
+  return res.json(user);
 };
-
