@@ -43,4 +43,4 @@ exports.chengrole = async (req, res) => {
   const user = await UserModel.findById({ id: _id });
   const newRole = user.role === "ADMIN" ? "USER" : "ADMIN";
   console.log(newRole);
-};
+}; 
