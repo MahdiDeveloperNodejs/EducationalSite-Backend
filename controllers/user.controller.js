@@ -64,3 +64,7 @@ exports.chengrole = async (req, res) => {
     message: "internal server error",
   });
 };
+exports.updateUser = async (req, res) => {
+  
+};
+

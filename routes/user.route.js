@@ -5,7 +5,8 @@ const Authmidelwer = require("../middlewares/auth");
 const isAuthmidelwer = require("../middlewares/auth");
 router
   .route("/getAll")
-  .get(Authmidelwer, isAuthmidelwer, userController.getAll);
+  .get(Authmidelwer, isAuthmidelwer, userController.getAll)
+  .put(Authmidelwer, isAuthmidelwer, userController.updateUser);
 
 router.post("/Ban/:id", Authmidelwer, isAuthmidelwer, userController.banUser);
 router
