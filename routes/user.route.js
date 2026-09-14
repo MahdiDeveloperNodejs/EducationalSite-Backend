@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const userController = require("../controllers/user.controller");
 const Authmidelwer = require("../middlewares/auth");
-const isAuthmidelwer = require("../middlewares/auth");
+const isAuthmidelwer = require("../middlewares/isAdmin");
 router
   .route("/")
   .get(Authmidelwer, isAuthmidelwer, userController.getAll)

@@ -71,6 +71,11 @@ exports.updateUser = async (req, res) => {
   const user = await UserModel.findByIdAndUpdate(
     { _id: req.user._id },
     { id, name, fullName, email, phone, password: hashedPassword },
-  ).lean();
+  )
+    .select("-password")
+    .select("-__v")
+    .select("-createdAt")
+    .select("-updatedAt")
+  .lean();
   return res.json(user);
 };
