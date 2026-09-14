@@ -13,7 +13,8 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (req, res) => {
-  // mahdizare
+  const getAllOption = CategoryModel.find({});
+  return res.status(200).json(getAllOption);
 };
 
 exports.remove = async (req, res) => {

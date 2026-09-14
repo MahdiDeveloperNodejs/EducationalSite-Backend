@@ -6,7 +6,7 @@ const isAuthmidelwer = require("../middlewares/isAdmin");
 
 router
   .route("/")
-  .post(Authmidelwer, isAuthmidelwer, categoryController.create)
+  .post(Authmidelwer, categoryController.create)
   .get(categoryController.getAll);
 
 router
