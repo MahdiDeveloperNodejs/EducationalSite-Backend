@@ -66,12 +66,11 @@ exports.chengrole = async (req, res) => {
   });
 };
 exports.updateUser = async (req, res) => {
-  const { fullName, name, email, phone, password } = req.body;
+  const { id, fullName, name, email, phone, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 12);
   const user = await UserModel.findByIdAndUpdate(
     { _id: req.user._id },
-    { name, fullName, email, phone, password: hashedPassword },
-    // { : 0 },
+    { id, name, fullName, email, phone, password: hashedPassword },
   ).lean();
   return res.json(user);
 };
