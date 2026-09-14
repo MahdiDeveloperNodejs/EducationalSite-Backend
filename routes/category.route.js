@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const router = Router();
 const categoryController = require("../controllers/category.controller");
-const Authmidelwer = require("../middlewares/auth");
+const Authmidelwer = require("./../middlewares/auth");
 const isAuthmidelwer = require("../middlewares/isAdmin");
+
 
 router
   .route("/")

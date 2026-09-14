@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
 };
 
 exports.getAll = async (req, res) => {
-  const getAllOption = CategoryModel.find({});
+  const getAllOption = await CategoryModel.find({});
   return res.status(200).json(getAllOption);
 };
 
