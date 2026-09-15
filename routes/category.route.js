@@ -2,8 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const categoryController = require("../controllers/category.controller");
 const Authmidelwer = require("./../middlewares/auth");
-const isAuthmidelwer = require("../middlewares/isAdmin");
-
+const isAuthmidelwer = require("../middlewares/isAdmin")
 
 router
   .route("/")
@@ -12,8 +11,8 @@ router
 
 router
   .route("/:id")
-  .delete(Authmidelwer, isAuthmidelwer, categoryController.remove)
-  .put(Authmidelwer, isAuthmidelwer, categoryController.update);
+  .delete(Authmidelwer, categoryController.remove)
+  .put(Authmidelwer, categoryController.update);
 
 module.exports = {
   CategoryRouts: router,
