@@ -8,22 +8,23 @@ exports.create = async (req, res) => {
     href,
     price,
     status,
-    discant,
-    categoryId,
+    discount,
+    categoryID,
   } = req.body;
 
   const course = await CourseModel.create({
     name,
     description,
-    caver: req.file.filename,
-    creator: req.user._is,
+    creator: req.user._id,
+    categoryID,
     support,
-    href,
     price,
+    href,
     status,
-    discant,
-    categoryId,
+    discount,
+    cover: req.file.filename,
   });
 
+  console.log("ok");
   res.status(201).json(course);
 };

@@ -1,34 +1,64 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
 
-const courseSchema = new Schema(
+const schema = mongoose.Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    caver: { type: String, required: true },
-    support: { type: String, required: true },
-    href: { type: String, required: true },
-    price: { type: Number, required: true },
-    status: { type: String, required: true },
-    discant: { type: String, required: true },
-    categoryId: { type: Schema.Types.ObjectId, ref: "Category" },
-    creator: { type: Schema.Types.ObjectId, ref: "User" },
+    name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    cover: {
+      type: String,
+      required: true,
+    },
+    support: {
+      type: String,
+      required: true,
+    },
+    href: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    status: {
+      type: String, // complete - presell - ...
+      required: true,
+    },
+    discount: {
+      type: Number,
+      required: true,
+    },
+    categoryID: {
+      type: mongoose.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
+    creator: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true },
 );
 
-courseSchema.virtual("session", {
-  ref: "session",
-  localField:"_id",
-  foreignField:"course"
+schema.virtual("sessions", {
+  ref: "Session",
+  localField: "_id",
+  foreignField: "course",
 });
 
-courseSchema.virtual("Comment", {
+schema.virtual("comments", {
   ref: "Comment",
-  localField:"_id",
-  foreignField:"course"
+  localField: "_id",
+  foreignField: "course",
 });
 
+const model = mongoose.model("Course", schema);
 
-const CourseModel = model("course", courseSchema);
-
-module.exports = CourseModel;
+module.exports = model;
