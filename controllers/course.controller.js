@@ -24,7 +24,5 @@ exports.create = async (req, res) => {
     discount,
     cover: req.file.filename,
   });
-
-  console.log("ok");
   res.status(201).json(course);
 };
