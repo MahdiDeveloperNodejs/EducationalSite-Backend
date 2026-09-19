@@ -9,14 +9,22 @@ const router = Router();
 
 router.route("/").post(
   Authmidelwer,
-  
+
   multer({
     storage: multerStorage,
     limits: { fieldSize: 1000000000 },
   }).single("cover"),
   courseController.create,
 );
+router.route("/:id/session").post(
+  Authmidelwer,
 
+  // multer({
+  //   storage: multerStorage,
+  //   limits: { fieldSize: 1000000000 },
+  // }).single("video"),
+  courseController.createSession,
+);
 module.exports = {
   CourseRouter: router,
 };
